@@ -26,17 +26,9 @@ export const ResultTitle = styled.h3`
   margin-top: 20px;
 `;
 
-export const CheckboxContainer = styled.div`
+export const FilterButtonContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
-`;
-
-export const CheckboxLabel = styled.label`
-  margin-bottom: 10px;
-`;
-
-export const CheckboxInput = styled.input`
-  margin-right: 5px;
 `;
 
 export const List = styled.ul`

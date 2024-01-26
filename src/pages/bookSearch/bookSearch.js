@@ -4,7 +4,7 @@
 
  La struttura del componente include un contenitore ("Container") con stili definiti esternamente,
  vari elementi come un titolo ("Title"), un input di testo ("Input"), un bottone per avviare la ricerca ("Button"),
- checkbox per le opzioni di filtro ("CheckboxContainer"), un titolo per visualizzare i risultati della ricerca ("ResultTitle"),
+ bottone per le opzioni di filtro ("FilterButtonContainer"), un titolo per visualizzare i risultati della ricerca ("ResultTitle"),
  una lista di libri risultanti ("List") e uno spinner di caricamento ("Spinner").
 
  Il componente è stato definito come una funzione senza stato (functional component).
@@ -22,15 +22,14 @@ import {
   Title,
   Input,
   ResultTitle,
-  CheckboxContainer,
-  CheckboxLabel,
-  CheckboxInput,
+  FilterButtonContainer,
   List,
   ListItem,
 } from "./styles";
 import Spinner from "../../components/Spinner";
 import Button from "../../components/Button";
 import HomeButton from "../../components/HomeButton";
+import ToggleButton from "../../components/ToggleButton";
 
 // Definizione del componente principale
 const BookSearch = () => {
@@ -75,27 +74,21 @@ const BookSearch = () => {
       {/* Titolo per visualizzare i risultati della ricerca */}
       <ResultTitle>Result:</ResultTitle>
 
-      {/* Contenitore per le opzioni di filtro tramite checkbox */}
-      <CheckboxContainer>
-        <CheckboxLabel>
-          {/* Checkbox per filtrare i libri con Ebook */}
-          <CheckboxInput
-            type="checkbox"
-            checked={hasEbook}
-            onChange={() => setHasEbook(!hasEbook)}
-          />
-          Has Ebook
-        </CheckboxLabel>
-        <CheckboxLabel>
-          {/* Checkbox per filtrare i libri con traduzione italiana */}
-          <CheckboxInput
-            type="checkbox"
-            checked={hasItalianTranslation}
-            onChange={() => setHasItalianTranslation(!hasItalianTranslation)}
-          />
-          Has Italian Translation
-        </CheckboxLabel>
-      </CheckboxContainer>
+      {/* Contenitore per le opzioni di filtro tramite Bottone */}
+      <FilterButtonContainer>
+        {/* Bottone per filtrare i libri con Ebook */}
+        <ToggleButton
+          selected={hasEbook}
+          onClick={() => setHasEbook(!hasEbook)}
+          label="Has Ebook"
+        />
+        {/* Bottone per filtrare i libri con traduzione italiana */}
+        <ToggleButton
+          label="Has Italian Translation"
+          selected={hasItalianTranslation}
+          onClick={() => setHasItalianTranslation(!hasItalianTranslation)}
+        />
+      </FilterButtonContainer>
 
       {/* Lista dei libri risultanti dalla ricerca */}
       <List>
